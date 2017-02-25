@@ -37,7 +37,6 @@ func versionCompare(v1 string, v2 string, op string) bool{
 	va := extract(v1)
 	vb := extract(v2)
 	c := va.compare(vb)
-	fmt.Println(c)
 	
 	switch op {
 	case "=":
@@ -53,7 +52,6 @@ func versionCompare(v1 string, v2 string, op string) bool{
 }
 
 func extract(in string) *Version{
-	fmt.Println(in)
 	ver := new(Version)
 	r := regexp.MustCompile(`(\d+).(\d+).?(.*)`)
 	r2 := r.FindStringSubmatch(in)
