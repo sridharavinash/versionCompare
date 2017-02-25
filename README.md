@@ -1,2 +1,3 @@
 # versionCompare
-Compares semantic versions 
+Compares semantic version strings
+
