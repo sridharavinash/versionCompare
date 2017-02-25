@@ -27,13 +27,21 @@ func (v1 *Version) compare(v2 *Version) int{
 		if v1.minor < v2.minor {
 			return -1
 		}
-		return 0
+		if v1.minor == v2.minor {
+			if v1.patch > v2.patch {
+				return 1
+			}
+			if v1.patch < v2.patch {
+				return -1
+			}
+			return 0
+		}
 	}
 
 	return 0
 }	
 
-func versionCompare(v1 string, v2 string, op string) int{
+func versionCompare(v1 string, v2 string) int{
 	va := extract(v1)
 	vb := extract(v2)
 	return va.compare(vb)
