@@ -24,3 +24,17 @@ func TestGreater(t *testing.T) {
 		t.Error("Expected 1, got", v)
 	}
 }
+
+func TestPatchGreaterAlpha(t *testing.T) {
+	v := versionCompare("2.4.1-version", "2.4.1-b")
+	if v != 1 {
+		t.Error("Expected 1, got", v)
+	}
+}
+
+func TestPatchGreaterAlpha2(t *testing.T) {
+	v := versionCompare("2.4.2-version", "2.4.1-zeta")
+	if v != 1 {
+		t.Error("Expected 1, got", v)
+	}
+}
