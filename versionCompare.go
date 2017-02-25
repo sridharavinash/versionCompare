@@ -1,7 +1,6 @@
 package versionCompare
 
 import (
-	"fmt"
 	"regexp"
 	"strconv"
 )
@@ -40,6 +39,15 @@ func versionCompare(v1 string, v2 string, op string) bool{
 	c := va.compare(vb)
 	fmt.Println(c)
 	
+	switch op {
+	case "=":
+		return c == 0
+	case "<":
+		return c == -1
+	case ">":
+		return c == 1
+	}
+
 	return false
 
 }
