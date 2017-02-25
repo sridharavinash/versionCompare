@@ -33,22 +33,11 @@ func (v1 *Version) compare(v2 *Version) int{
 	return 0
 }	
 
-func versionCompare(v1 string, v2 string, op string) bool{
+func versionCompare(v1 string, v2 string, op string) int{
 	va := extract(v1)
 	vb := extract(v2)
-	c := va.compare(vb)
+	return va.compare(vb)
 	
-	switch op {
-	case "=":
-		return c == 0
-	case "<":
-		return c == -1
-	case ">":
-		return c == 1
-	}
-
-	return false
-
 }
 
 func extract(in string) *Version{
