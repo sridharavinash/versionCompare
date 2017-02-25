@@ -17,3 +17,10 @@ func TestEqualPass(t *testing.T) {
 		t.Error("Expected true, got", v)
 	}
 }
+
+func TestEqualPass2(t *testing.T) {
+	v := versionCompare("2.4.1", "2.4", "=")
+	if !v {
+		t.Error("Expected true, got", v)
+	}
+}
