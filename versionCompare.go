@@ -12,7 +12,8 @@ type Version struct{
 	patch string
 }
 
-
+// returns -1,0,1 for lesser,equal and greater
+// returns -2 on error
 func (v1 *Version) compare(v2 *Version) int{
 	if v1.major > v2.major {
 		return 1
@@ -40,9 +41,12 @@ func (v1 *Version) compare(v2 *Version) int{
 		}
 	}
 
+	//should never get here
 	return -2
 }	
 
+// returns -1,0,1 for lesser,equal and greater
+// returns err if it is unable to parse the input.
 func versionCompare(v1 string, v2 string) (int, error){
 	va, err := extract(v1)
 	if err != nil {
@@ -59,6 +63,9 @@ func versionCompare(v1 string, v2 string) (int, error){
 	
 }
 
+// extracts a string in the form of 1.2.3-blah
+// Returns a version major minor and patch if successful
+// otherwise returns an error.
 func extract(in string) (*Version, error){
 	ver := new(Version)
 	r := regexp.MustCompile(`(\d+).(\d+).?(.*)`)
