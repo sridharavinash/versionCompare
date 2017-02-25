@@ -45,3 +45,10 @@ func TestPatchNondigitVersions(t *testing.T) {
 		t.Error("Expected error 'Unable to parse input' , got", err)
 	}
 }
+
+func TestGreaterMajorOnly(t *testing.T) {
+	v, _ := versionCompare("3.0", "2.4.1-zeta")
+	if v != 1 {
+		t.Error("Expected 1, got", v)
+	}
+}

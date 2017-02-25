@@ -58,7 +58,6 @@ func versionCompare(v1 string, v2 string) (int, error){
 	if err2 != nil {
 		return -2, err2
 	}
-
 	return va.compare(vb), nil
 	
 }
@@ -68,7 +67,7 @@ func versionCompare(v1 string, v2 string) (int, error){
 // otherwise returns an error.
 func extract(in string) (*Version, error){
 	ver := new(Version)
-	r := regexp.MustCompile(`(\d+).(\d+).?(.*)`)
+	r := regexp.MustCompile(`^(\d+)?.?(\d+).?(.*)`)
 	r2 := r.FindStringSubmatch(in)
 	if r2 == nil {
 		return ver, errors.New("Unable to parse input.")
