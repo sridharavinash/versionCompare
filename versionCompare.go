@@ -12,7 +12,7 @@ type Version struct{
 	patch string
 }
 
-func (v *Version) compare(v1 *Version, v2 *Version) int{
+func (v1 *Version) compare(v2 *Version) int{
 	if v1.major > v2.major {
 		return 1
 	}
@@ -30,13 +30,15 @@ func (v *Version) compare(v1 *Version, v2 *Version) int{
 		}
 		return 0
 	}
+
+	return 0
 }	
 
 func versionCompare(v1 string, v2 string, op string) bool{
 	va := extract(v1)
 	vb := extract(v2)
-	
-	fmt.Println(va,vb)
+	c := va.compare(vb)
+	fmt.Println(c)
 	
 	return false
 
